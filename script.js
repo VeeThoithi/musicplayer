@@ -18,3 +18,16 @@ function playPause(){
         ctrlIcon.classList.add("fa-play");
     }
 }
+
+if (song.play()){
+    setInterval(()=>{
+    progress.value = song.currentTime
+    },500)
+}
+
+progress.onchange = function(){
+    song.play();
+    song.currentTime = progress.value;
+    ctrlIcon.classList.remove("fa-play");
+    ctrlIcon.classList.add("fa-pause");
+}
