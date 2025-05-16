@@ -21,17 +21,18 @@
         <img src="media/download.jpg" class="songimage">
         <h1>Teenage fever</h1>
         <h3>By Drake</h3>
-        <audio controls>
+        <audio controls id="song">
             <source src="media/SpotiDownloader.com - Teenage Fever - Drake.mp3" type="audio/mpeg">
         </audio>
         <input type="range" value="0" id="progress">
 
         <div class="controls">
             <div><i class="fa-solid fa-backward" style="color:#9a4b9b;"></i></div>
-            <div><i class="fa-solid fa-play" style="color:#9a4b9b;" ></i></div>  
+            <div onclick="playPause()"><i class="fa-solid fa-play" style="color:#9a4b9b;"  id="ctrlIcon"></i></div>  
             <div> <i class="fa-solid fa-forward" style="color:#9a4b9b;"></i></div>   
         </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
