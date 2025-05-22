@@ -6,23 +6,18 @@ let title =document.getElementById("title");
 let artist = document.getElementById("artist")
 let currentSongIndex = 0;
 
+
 const songs =[
     {
         "title" : "Teenage Fever",
         "artist" : "Drake",
         "file"  : "media/Songs/Teenage Fever.mp3",
-        "songimage" : "media/drake 2.jpg"
+        "songimage" : "media/Drake desktop.jpg"
     },
     {
         "title" : "Leave",
         "artist" : "Cil",
         "file"  : "media/Songs/Leave.mp3",
-        "songimage" : "media/Cil Album cover.jpg"
-    },
-    {
-        "title" : "One More Shot",
-        "artist" : "Cil",
-        "file"  : "media/songs/One More Shot.mp3",
         "songimage" : "media/Cil Album cover.jpg"
     },
     {
@@ -38,19 +33,49 @@ const songs =[
         "songimage" : "media/Cil Album cover.jpg"
     },
     {
+        "title" : "February 3rd",
+        "artist" : "Jorja Smith",
+        "file"  : "media/songs/February 3rd.mp3",
+        "songimage" : "media/Jorja smith1.jpg"
+    },
+    {
         "title" : "Devil in your eyes",
         "artist" : "Cil",
         "file"  : "media/songs/Devil In Your Eyes.mp3",
         "songimage" : "media/Cil Album cover.jpg"
+    },
+    {
+        "title" : "Back to friends",
+        "artist" : "Sombr",
+        "file"  : "media/songs/back to friends.mp3",
+        "songimage" : "media/sombr.jpg"
+    },
+    {
+        "title" : "Lost and found",
+        "artist" : "Jorja Smith",
+        "file"  : "media/songs/Lost & Found.mp3",
+        "songimage" : "media/Jorja smith1.jpg"
+    },
+    {
+        "title" : "One More Shot",
+        "artist" : "Cil",
+        "file"  : "media/songs/One More Shot.mp3",
+        "songimage" : "media/Cil Album cover.jpg"
+    },
+    {
+        "title" : "Teenage Fantasy",
+        "artist" : "Jorja Smith",
+        "file"  : "media/songs/Lost & Found.mp3",
+        "songimage" : "media/Jorja smith1.jpg"
     },
 ]
 
 function loadSong(){
     let current =songs[currentSongIndex];
     song.src =current.file;
-    title.InnerText = current.title;
-    artist.Innertext = current.artist;
-    songImage.src= current.image;
+    title.innerText = current.title;
+    artist.innerText = current.artist;
+    songImage.src= current.songimage;
 
     song.load();
     song.play();
@@ -102,3 +127,41 @@ progress.onchange = function(){
     ctrlIcon.classList.remove("fa-play");
     ctrlIcon.classList.add("fa-pause");
 }
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+    return `${mins}:${secs}`;
+}
+
+song.addEventListener('loadedmetadata', () => {
+    document.getElementById('totalTime').textContent = formatTime(song.duration);
+});
+
+song.addEventListener('timeupdate', () => {
+    document.getElementById('currentTime').textContent = formatTime(song.currentTime);
+});
+
+// Update progress bar as the song plays
+song.addEventListener('timeupdate', () => {
+    if (!isNaN(song.duration)) {
+        progress.max = song.duration;
+        progress.value = song.currentTime;
+    }
+});
+
+// Scrub song when user changes progress manually
+progress.addEventListener('input', () => {
+    song.currentTime = progress.value;
+});
+
+
+
+const musicPlayer = document.getElementById('musicplayer');
+const homepage = document.getElementById('homepage');
+
+function showHome() {
+    musicPlayer.style.display = 'none';
+    homepage.style.display = 'block';
+}
+

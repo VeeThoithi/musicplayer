@@ -6,26 +6,38 @@
     <title>Music  player</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/99c1c50972.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="container">
+        <div id="homepage" style="display: none;">
+            <h1>🎵 Choose a Song</h1>
+            <ul id="songList">
+                <li onclick="loadSong(0)">Teenage Fever - Drake</li>
+                <li onclick="loadSong(1)">Another Song - Artist</li>
+                <li onclick="loadSong(2)">Third Song - Artist</li>
+            </ul>
+        </div>
+        
         <div id="musicplayer">
         <nav>
             <div class="circle">
-                <i class="fa-solid fa-angle-left" style="color: #9d4892;"></i>
+                <i class="fa-solid fa-angle-left"  onclick="showHome()" style="color: #9d4892;"></i>
             </div>
             <div class="circle">
                 <i class="fa-solid fa-bars" style="color: #9a4b9b;"></i>
             </div>
         </nav>
-        <img id ="songimage" src="media/drake  2.jpg" class="songimage">
+        <img id ="songimage" src="media/Drake desktop.jpg" class="songimage">
         <h1 id="title">Teenage fever</h1>
-        <h3 id="artist">By Drake</h3>
+        <h3 id="artist">Drake</h3>
         <audio id="song">
-            <source src="media/SpotiDownloader.com - Teenage Fever - Drake.mp3" type="audio/mpeg">
+            <source src="media/Songs/Teenage Fever.mp3" type="audio/mpeg">
         </audio>
         <input type="range" value="0" id="progress">
-
+        <div id="timeDisplay">
+            <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
+          </div>
         <div class="controls">
             <div onclick="prevSong()"><i class="fa-solid fa-backward" style="color:#9a4b9b;"></i></div>
             <div onclick="playPause()"><i class="fa-solid fa-play" style="color:#9a4b9b;"  id="ctrlIcon"></i></div>  
