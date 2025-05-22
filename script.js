@@ -1,7 +1,38 @@
 let progress = document.getElementById("progress");
 let song = document.getElementById("song");
 let ctrlIcon = document.getElementById("ctrlIcon");
+let songImage =document.getElementById("songimage");
+let title =document.getElementById("title");
+let artist = document.getElementById("artist")
+let currentSongIndex = 0;
 
+const songs =[
+    {
+        "title" : "Teenage Fever",
+        "artist" : "Drake",
+        "file"  : "media/songs/Teenage Fever.mp3",
+        "songimage" : "media/drake 2.jpg"
+    },
+    {
+        "title" : "Teenage Fever",
+        "artist" : "Drake",
+        "file"  : "media/songs/Teenage Fever.mp3",
+        "songimage" : "media/drake 2.jpg"
+    },
+]
+
+function loadSong(){
+    let current =songs[currentSongIndex];
+    song.src =current.file;
+    title.InnerText = current.title;
+    artist.Innertext = current.artist;
+    songImage.src= current.image;
+
+    song.load();
+    song.play();
+    
+
+}
 song.onloadedmetadata =function(){
     progress.max = song.oduration;
     progress.value = song.currentTime;
